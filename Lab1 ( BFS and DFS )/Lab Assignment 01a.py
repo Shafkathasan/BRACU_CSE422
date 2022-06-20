@@ -30,49 +30,49 @@ def covid_tracer(file_name):
             pos = stack.pop(-1)
 
             # checking Right
-            if (pos[0], pos[1] + 1) in infect and (pos[0], pos[1] + 1) not in visited:  # right
+            if (pos[0], pos[1] + 1) in infect and (pos[0], pos[1] + 1) not in visited:
                 stack.append((pos[0], pos[1] + 1))
                 visited.append((pos[0], pos[1] + 1))
                 infect.remove((pos[0], pos[1] + 1))
 
             # checking Left
-            if (pos[0], pos[1] - 1) in infect and (pos[0], pos[1] - 1) not in visited:  # left
+            if (pos[0], pos[1] - 1) in infect and (pos[0], pos[1] - 1) not in visited:
                 stack.append((pos[0], pos[1] - 1))
                 visited.append((pos[0], pos[1] - 1))
                 infect.remove((pos[0] - 1, pos[1] - 1))
 
             # checking Up
-            if (pos[0] - 1, pos[1]) in infect and (pos[0] - 1, pos[1]) not in visited:  # up
+            if (pos[0] - 1, pos[1]) in infect and (pos[0] - 1, pos[1]) not in visited:
                 stack.append((pos[0] - 1, pos[1]))
                 visited.append((pos[0] - 1, pos[1]))
                 infect.remove((pos[0] - 1, pos[1]))
 
             # checking Down
-            if (pos[0] + 1, pos[1]) in infect and (pos[0] + 1, pos[1]) not in visited:  # down
+            if (pos[0] + 1, pos[1]) in infect and (pos[0] + 1, pos[1]) not in visited:
                 stack.append((pos[0] + 1, pos[1]))
                 visited.append((pos[0] + 1, pos[1]))
                 infect.remove((pos[0] + 1, pos[1]))
 
             # checking Upper Right
-            if (pos[0] - 1, pos[1] + 1) in infect and (pos[0] - 1, pos[1] + 1) not in visited:  # upper right
+            if (pos[0] - 1, pos[1] + 1) in infect and (pos[0] - 1, pos[1] + 1) not in visited:
                 stack.append((pos[0] - 1, pos[1] + 1))
                 visited.append((pos[0] - 1, pos[1] + 1))
                 infect.remove((pos[0] - 1, pos[1] + 1))
 
             # checking Lower Right
-            if (pos[0] + 1, pos[1] + 1) in infect and (pos[0] + 1, pos[1] + 1) not in visited:  # lower right
+            if (pos[0] + 1, pos[1] + 1) in infect and (pos[0] + 1, pos[1] + 1) not in visited:
                 stack.append((pos[0] + 1, pos[1] + 1))
                 visited.append((pos[0] + 1, pos[1] + 1))
                 infect.remove((pos[0] + 1, pos[1] + 1))
 
             # checking Upper Left
-            if (pos[0] - 1, pos[1] - 1) in infect and (pos[0] - 1, pos[1] - 1) not in visited:  # upper left
+            if (pos[0] - 1, pos[1] - 1) in infect and (pos[0] - 1, pos[1] - 1) not in visited:
                 stack.append((pos[0] - 1, pos[1] - 1))
                 visited.append((pos[0] - 1, pos[1] - 1))
                 infect.remove((pos[0] - 1, pos[1] - 1))
 
             # checking Lower Left
-            if (pos[0] + 1, pos[1] - 1) in infect and (pos[0] + 1, pos[1] - 1) not in visited:  # lower left
+            if (pos[0] + 1, pos[1] - 1) in infect and (pos[0] + 1, pos[1] - 1) not in visited:
                 stack.append((pos[0] + 1, pos[1] - 1))
                 visited.append((pos[0] + 1, pos[1] - 1))
                 infect.remove((pos[0] + 1, pos[1] - 1))
@@ -122,25 +122,25 @@ def apocalypse(file_name):
             pos = queue.pop(0)
 
             # checking Right
-            if (pos[0], pos[1] + 1) in human and (pos[0], pos[1] + 1) not in visited:  # right
+            if (pos[0], pos[1] + 1) in human and (pos[0], pos[1] + 1) not in visited:
                 queue.append((pos[0], pos[1] + 1))
                 visited.append((pos[0], pos[1] + 1))
                 Flag = True
 
             # checking Left
-            if (pos[0], pos[1] - 1) in human and (pos[0], pos[1] - 1) not in visited:  # left
+            if (pos[0], pos[1] - 1) in human and (pos[0], pos[1] - 1) not in visited:
                 queue.append((pos[0], pos[1] - 1))
                 visited.append((pos[0], pos[1] - 1))
                 Flag = True
 
             # checking Up
-            if (pos[0] - 1, pos[1]) in human and (pos[0] - 1, pos[1]) not in visited:  # up
+            if (pos[0] - 1, pos[1]) in human and (pos[0] - 1, pos[1]) not in visited:
                 queue.append((pos[0] - 1, pos[1]))
                 visited.append((pos[0] - 1, pos[1]))
                 Flag = True
 
             # checking Down
-            if (pos[0] + 1, pos[1]) in human and (pos[0] + 1, pos[1]) not in visited:  # down
+            if (pos[0] + 1, pos[1]) in human and (pos[0] + 1, pos[1]) not in visited:
                 queue.append((pos[0] + 1, pos[1]))
                 visited.append((pos[0] + 1, pos[1]))
                 Flag = True
