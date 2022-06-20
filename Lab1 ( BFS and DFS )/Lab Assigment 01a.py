@@ -19,7 +19,7 @@ def covid_tracer(file_name):
             if 'Y' in matrix[row][col]:
                 infect.append((row, col))
 
-    counter = []  # counter to keep track of visited touples or position within matrix
+    counter = []  # counter to keep track of visited tuples or position within matrix
     # appliying DFS to all areas in matrix
     for pair in infect:
         stack = [pair]
@@ -79,7 +79,6 @@ def covid_tracer(file_name):
             counter.append(len(visited))
     print(file_name[:13], 'Output:')
     print(max(counter), '\n')  # Print max value of infected area
-    #return (max(counter))  # returning max value of infected area
 
 
 # Task 02
@@ -95,14 +94,14 @@ def apocalypse(file_name):
     for index in range(len(matrix)):
         matrix[index][-1] = matrix[index][-1].replace('\n', '')
 
-    # creating a touple list of the positions of aliens
+    # creating a tuple list of the positions of aliens
     alien = []
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
             if 'A' in matrix[row][col]:
                 alien.append((row, col))
 
-    # creating a touple list of the positions of humans
+    # creating a tuple list of the positions of humans
     human = []
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
@@ -120,26 +119,35 @@ def apocalypse(file_name):
         while len(queue):
             pos = queue.pop(0)
 
+            # checking Right
             if (pos[0], pos[1] + 1) in human and (pos[0], pos[1] + 1) not in visited:  # right
                 queue.append((pos[0], pos[1] + 1))
                 visited.append((pos[0], pos[1] + 1))
                 Flag = True
+
+            # checking Left
             if (pos[0], pos[1] - 1) in human and (pos[0], pos[1] - 1) not in visited:  # left
                 queue.append((pos[0], pos[1] - 1))
                 visited.append((pos[0], pos[1] - 1))
                 Flag = True
+
+            # checking Up
             if (pos[0] - 1, pos[1]) in human and (pos[0] - 1, pos[1]) not in visited:  # up
                 queue.append((pos[0] - 1, pos[1]))
                 visited.append((pos[0] - 1, pos[1]))
                 Flag = True
+
+            # checking Down
             if (pos[0] + 1, pos[1]) in human and (pos[0] + 1, pos[1]) not in visited:  # down
                 queue.append((pos[0] + 1, pos[1]))
                 visited.append((pos[0] + 1, pos[1]))
                 Flag = True
-            # checker to count only when the queue is pushed when neigbour found.
+
+            # checker to count only when the queue is pushed when neighbour found.
             if (Flag):
                 count += 1
                 Flag = False
+
         level.append(count)
 
     print(file_name[:13], 'Output:')

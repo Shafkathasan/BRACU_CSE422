@@ -151,5 +151,6 @@ def apocalypse(file_name):
 
 covid_tracer('Task01_Input1.txt')
 covid_tracer('Task01_Input2.txt')
+
 apocalypse("Task02_Input1.txt")
 apocalypse("Task02_Input2.txt")
