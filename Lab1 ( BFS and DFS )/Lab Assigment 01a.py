@@ -1,4 +1,4 @@
-print("\n###CSE422_Lab01-Mohammad Shafkat Hasan_19101077###\n")
+print("\n###CSE422_Lab01_Mohammad Shafkat Hasan_19101077###\n")
 
 
 # Task 01
@@ -12,7 +12,7 @@ def covid_tracer(file_name):
     for index in range(len(matrix)):
         matrix[index][-1] = matrix[index][-1].replace('\n', '')
 
-    # creating a touple list of the positions of infect
+    # creating a tuple list of the positions of infect
     infect = []
     for row in range(len(matrix)):
         for col in range(len(matrix[row])):
@@ -76,7 +76,9 @@ def covid_tracer(file_name):
                 stack.append((pos[0] + 1, pos[1] - 1))
                 visited.append((pos[0] + 1, pos[1] - 1))
                 infect.remove((pos[0] + 1, pos[1] - 1))
+
             counter.append(len(visited))
+
     print(file_name[:13], 'Output:')
     print(max(counter), '\n')  # Print max value of infected area
 

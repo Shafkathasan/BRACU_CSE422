@@ -76,6 +76,7 @@ def covid_tracer(file_name):
                 ys.remove((current[0]-1, current[1]+1))
 
             dfs_counts.append(len(visited))
+
     print(file_name[:13], 'Output:')
     print(max(dfs_counts),'\n')
 
