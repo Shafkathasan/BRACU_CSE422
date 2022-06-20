@@ -152,6 +152,6 @@ def apocalypse(file_name):
 
 covid_tracer('Task01_Input1.txt')
 covid_tracer('Task01_Input2.txt')
-
+# Must change Input file name according to your's
 apocalypse("Task02_Input1.txt")
 apocalypse("Task02_Input2.txt")
