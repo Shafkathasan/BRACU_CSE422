@@ -111,5 +111,5 @@ def main(filename):
     print(genetic_algorithm(population, inputs))
 
 
-main('input.txt')
-main('input2.txt')
+main('input1.txt')
+main('input3.txt')
