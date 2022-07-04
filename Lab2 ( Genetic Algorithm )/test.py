@@ -8,46 +8,46 @@ import random
 #################
 
 
-# taking number of batsmans
+# taking number of transections
 
-batsman_amount_input = -1
-batsman_amount_input_accepted = FALSE
+transection_amount_input = -1
+transection_amount_input_accepted = FALSE
 
-while (batsman_amount_input < 1 or batsman_amount_input > 18) and batsman_amount_input_accepted == FALSE:
+while (transection_amount_input < 1 or transection_amount_input > 10**2) and transection_amount_input_accepted == FALSE:
 
-    batsman_amount_input = int(input())
+    transection_amount_input = int(input())
 
-    if batsman_amount_input >= 1 and batsman_amount_input <= 18:
-        batsman_amount_input_accepted = TRUE
+    if transection_amount_input >= 1 and transection_amount_input <= 10**2:
+        transection_amount_input_accepted = TRUE
 
     else:
-        print('invalid number. N (1 ≤ N ≤ 18)')
+        print('invalid number. N( 1 ≤ N ≤ 10^2 )')
 
 
 value_accepted = FALSE
 
-# taking batsman values
+# taking transection values
 
-batsmans_input = []
+transections_input = []
 
-for i in range(batsman_amount_input):
+for i in range(transection_amount_input):
 
     value_accepted = FALSE
 
     while value_accepted == FALSE:
 
-        batsman = input().replace(' ', '')
+        transection = input().replace(' ', '')
 
-        if batsman[0] == 'T':
+        if transection[0] == 'l':
 
-            value = 0-int(batsman[1:])
-            batsmans_input.append(value)
+            value = 0-int(transection[1:])
+            transections_input.append(value)
             value_accepted = TRUE
 
-        elif batsman[0] == 'R':
+        elif transection[0] == 'd':
 
-            value = 0+int(batsman[1:])
-            batsmans_input.append(value)
+            value = 0+int(transection[1:])
+            transections_input.append(value)
             value_accepted = TRUE
 
         else:
@@ -61,11 +61,11 @@ for i in range(batsman_amount_input):
 
 if(value_accepted == TRUE):
 
-    batsman_amount = batsman_amount_input
-    batsmans = batsmans_input
+    transection_amount = transection_amount_input
+    transections = transections_input
 
     # fitness_function
-    def fitness_function(batsmans, total_genome, genome_length, population):
+    def fitness_function(transections, total_genome, genome_length, population):
 
         # counting sum for each genome
 
@@ -77,8 +77,8 @@ if(value_accepted == TRUE):
 
                 if population[i][0][j] == '1':
 
-                    #print(count, '+', batsmans[j], '= ')
-                    fitness = fitness+int(batsmans[j])
+                    #print(count, '+', transections[j], '= ')
+                    fitness = fitness+int(transections[j])
 
             # store the sum of that genome as fitness
 
@@ -107,9 +107,9 @@ if(value_accepted == TRUE):
 
             while(genome_checker == False):
 
-                # create genome where length = batsman_amount
+                # create genome where length = transection_amount
 
-                for j in range(batsman_amount):
+                for j in range(transection_amount):
 
                     genome = genome+(str(random.randint(0, 1)))
 
@@ -137,8 +137,8 @@ if(value_accepted == TRUE):
 
             population[i].append(int(0))
 
-        fitness_function(batsmans, total_genome,
-                         batsman_amount, population)
+        fitness_function(transections, total_genome,
+                         transection_amount, population)
 
         #######################
         # Parent selection
@@ -171,7 +171,7 @@ if(value_accepted == TRUE):
             for j in range(2):
 
                 # select a random position
-                swaping_index = random.randint(0, batsman_amount-1)
+                swaping_index = random.randint(0, transection_amount-1)
 
                 # store the character of that position
                 temp = str(parents[row_index][0][swaping_index])
@@ -196,7 +196,7 @@ if(value_accepted == TRUE):
         for i in range(len(child_population)):
 
             # select a random position
-            muted_index = random.randint(0, batsman_amount-1)
+            muted_index = random.randint(0, transection_amount-1)
 
             child_population[i][0] = child_population[i][0][:muted_index] + \
                 str(random.randint(0, 1)) + \
@@ -206,8 +206,8 @@ if(value_accepted == TRUE):
         # Fitness calculation of new population
         ###########################################
 
-        fitness_function(batsmans, len(child_population),
-                         batsman_amount, child_population)
+        fitness_function(transections, len(child_population),
+                         transection_amount, child_population)
 
         ###########################################
         # Check if ans exist in new population
