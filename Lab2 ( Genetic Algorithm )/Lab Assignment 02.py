@@ -124,12 +124,12 @@ def GA_cross(amount, population, n):
 n = int(input())
 
 char = []
-taka = []
+runs = []
 #df = pd.DataFrame(data=qwe)
 
 for i in range(0, n):
     char.append(input())
-    taka.append(int(input()))
+    runs.append(int(input()))
 
 #DataFrameName.insert(loc, column, value, allow_duplicates = False)
 
@@ -141,9 +141,9 @@ amount = []
 
 for i in range(0, n):
     if char[i] == 'd':
-        amount.append(taka[i])
+        amount.append(runs[i])
     else:
-        amount.append(taka[i] * (-1))
+        amount.append(runs[i] * (-1))
 
 pop_size = 2 ** (n-1)
 j = 1
