@@ -1,4 +1,6 @@
+print("###CSE422_Lab01_Mohammad Shafkat Hasan_19101077###\n")
 import random as r
+import numpy as np
 import pandas as pd
 
 never_found = False
@@ -10,10 +12,7 @@ def fitness(amount, population, n):
             fit += amount[i]*int(eachData[i])
         fits.append(fit)
 
-    #print(fits)
-
     return fits
-
 
 
 def crossover(population, n):
@@ -40,11 +39,6 @@ def crossover(population, n):
                 population.remove(remove_all_zero)
         else:
             break
-
-
-
-    #print("Cross")
-    #print(population)
 
     return population
 
@@ -74,9 +68,6 @@ def mutate(population, n):
         if remove_all_zero in mutated_pop:
             mutated_pop.remove(remove_all_zero)
 
-    #print("Mutated")
-    #print(mutated_pop)
-
     return mutated_pop
 
 cnt = 0
@@ -92,7 +83,6 @@ def GA(amount, population, n):
         else:
             return
 
-    #print(population[fits.index(0)])
     if 0 in fits:
         print(population[fits.index(0)])
         exit()
@@ -100,8 +90,6 @@ def GA(amount, population, n):
         never_found = True
         return None
 
-
-    #print(fits)
 
 def GA_cross(amount, population, n):
     global never_found
@@ -121,26 +109,21 @@ def GA_cross(amount, population, n):
         return None
 
 #################################################################
-n = int(input())
+n = input()
+
+d = dict(input("Enter key and value: ").split() for _ in range(n))
 
 char = []
 runs = []
-#df = pd.DataFrame(data=qwe)
 
 for i in range(0, n):
     char.append(input())
     runs.append(int(input()))
 
-#DataFrameName.insert(loc, column, value, allow_duplicates = False)
-
-#print(df.iloc[0][0])
-
-#print(bank)
-
 amount = []
 
 for i in range(0, n):
-    if char[i] == 'd':
+    if char[i] == np.sum(runs)/char[0]:
         amount.append(runs[i])
     else:
         amount.append(runs[i] * (-1))
@@ -157,7 +140,6 @@ while j <= pop_size:
         population.append(dataset)
         j += 1
 
-#print(population)
 remove_all_zero = "0"*n
 if remove_all_zero in population:
     population.remove(remove_all_zero)
@@ -170,8 +152,3 @@ GA(amount, population, n)
 if never_found:
     print("-1")
 
-
-
-#print(amount)
-#print(population)
-#print(len(population))
