@@ -1,63 +1,84 @@
 #print("###CSE422_Lab01_Mohammad Shafkat Hasan_19101077###\n")
 
-import math
+import numpy as np
 import random
 
-comp_value = 0
+MAX, MIN = 1000, 0
 
-def alphaBeta_pruning(index, b, d, alpha, beta, attacker):
-    start = b * index + 1
-    stop = b * index + b + 1
-    global comp_value
 
-    if d == 0:
-        return evaluations[index]
+def minimax(depth, nodeIndex, maximizingPlayer,
+            values, alpha, beta):
+    if depth == 3:
+        return values[nodeIndex]
 
-    if attacker:
-        for i in range(start, stop):
-            child_evaluation = alphaBeta_pruning(i, b, d - 1, alpha, beta, False)
-            alpha = max(alpha, child_evaluation)
-            evaluations[index] = max(evaluations[index], child_evaluation)
+    if maximizingPlayer:
+
+        best = MIN
+
+        for i in range(0, 2):
+
+            val = minimax(depth + 1, nodeIndex * 2 + i,
+                          False, values, alpha, beta)
+            best = max(best, val)
+            alpha = max(alpha, best)
+
+            # Alpha Beta Pruning
             if beta <= alpha:
                 break
-        return evaluations[index]
+
+        return best
 
     else:
-        for i in range(start, stop):
-            child_evaluation = alphaBeta_pruning(i, b, d - 1, alpha, beta, True)
-            beta = min(beta, child_evaluation)
-            evaluations[index] = min(evaluations[index], child_evaluation)
-            if d == 1:
-                comp_value = comp_value + 1
+        best = MAX
+
+        for i in range(0, 2):
+
+            val = minimax(depth + 1, nodeIndex * 2 + i,
+                          True, values, alpha, beta)
+            best = min(best, val)
+            beta = min(beta, best)
+
+            # Alpha Beta Pruning
             if beta <= alpha:
                 break
-        return evaluations[index]
 
+        return best
+
+
+#### Task 01 #####
 
 id = input("Enter your student ID: ")
-min_hp, max_hp = input("Enter the minimum and maximum value for the range of negative HP: ").split(" ")
-min_hp, max_hp = int(min_hp), int(max_hp)
-d, b, initial_hp = int(id[0]) * 2, int(id[2]), int(id[(len(id) - 1)] + id[(len(id) - 2)])
+#If any digit in your id is 0 consider it as 8
+n = str(id)
+n2=n.replace('0','8')
+id = n2
+print("Converted ID:",id)
 
-leafNodes = []
-for i in range(b**d):
-        l = random.randint(min_hp, max_hp)
-        leafNodes.append(l)
+min_hp = int(id[4])
+total_win = int(id[:6-1:-1]) #lst[:index-1:-1]
+max_hp = int(total_win * 1.5)
+randomlist = random.sample(range(min_hp, max_hp), 8)
+print("Generated 8 random points between the minimum and maximum point limits:",randomlist)
+print("Total points to win:",total_win)
+values = randomlist
+Winner = minimax(0, 0, True, values, MIN, MAX)
+print("Achieved point by applying alpha-beta pruning = ", Winner)
+if Winner> total_win:
+    print("The Winner is Optimus Prime")
+else:
+    print("The Winner is Megatron")
 
-evaluations = []
-for i in range(d):
-        for j in range(b**i):
-            if i % 2 == 0:
-                evaluations.append(-math.inf)
-            else:
-                evaluations.append(math.inf)
-evaluations = evaluations + leafNodes
+#### Task 02 #####
+print("\nAfter the shuffle:")
+wins = 0
+new_list = randomlist.copy()
+for i in range(int(id[3])):
+    random.shuffle(new_list)
+    Winner = minimax(0, 0, True, new_list, MIN, MAX)
+    if Winner > total_win:
+        wins += 1
 
-alpha, beta = -math.inf, math.inf
-alphaBeta_pruning(0, b, d, alpha, beta, True)
-
-print("=== Outputs ===")
-print("Depth and Branches ratio is %d:%d" % (d, b))
-print("Terminal States (leaf node values) are", *leafNodes, sep = ", ")
-print("Left life(HP) of the defender after maximum damage caused by the attacker is", initial_hp - evaluations[0])
-print("After Alpha-Beta Pruning Leaf Node Comparisons", comp_value)
+print(new_list)
+max_value = np.max(new_list)
+print('The maximum value of all shuffles:',max_value)
+print('Won',wins,"times out of",int(id[3]),'number of shuffles')
