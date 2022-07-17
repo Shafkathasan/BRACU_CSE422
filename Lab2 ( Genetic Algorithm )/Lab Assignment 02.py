@@ -1,4 +1,4 @@
-print("###CSE422_Lab01_Mohammad Shafkat Hasan_19101077###\n")
+print("###CSE422_Lab02_Mohammad Shafkat Hasan_19101077###\n")
 import random as r
 import numpy as np
 import pandas as pd
