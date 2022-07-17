@@ -55,6 +55,7 @@ id = n2
 print("Converted ID:",id)
 
 min_hp = int(id[4])
+#Reverse last 2 digits of your student ID
 total_win = int(id[:6-1:-1]) #lst[:index-1:-1]
 max_hp = int(total_win * 1.5)
 randomlist = random.sample(range(min_hp, max_hp), 8)
@@ -68,9 +69,10 @@ if Winner> total_win:
 else:
     print("The Winner is Megatron")
 
+
 #### Task 02 #####
 print("\nAfter the shuffle:")
-wins = 0
+wins = 0 #wins count
 new_list = randomlist.copy()
 for i in range(int(id[3])):
     random.shuffle(new_list)
