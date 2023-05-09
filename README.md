@@ -4,7 +4,7 @@ BRACU CSE422 Labs &amp; Assignments (Summer 2022). <br> <br>
 This are the Labs & Assignments codes for CSE422: Artificial Intelligence. There are lots of way to Solve this Problems. I am trying my best. If there are Any Problem in Solution let Me know.
 
 <h2>Topics</h2>
-  <ul>
+<ul>
   <li>BFS and DFS</li>
   <li>Genetic Algorithm</li>
   <li>Alpha-Beta Pruning</li>
